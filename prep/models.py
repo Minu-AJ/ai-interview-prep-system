@@ -9,6 +9,7 @@ class Topic(models.Model):
 class Question(models.Model):
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     question_text = models.TextField()
+    correct_answer = models.TextField(default="")
     
     def __str__(self):
         return self.question_text

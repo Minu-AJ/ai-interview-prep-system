@@ -10,7 +10,7 @@
     <ul>
         {% for topic in topics %}
         <li>
-            <a href="{% url "question" topic.id %}">{{topic.name}}</a>
+            <a href="{% url "start_question" topic.id %}">{{topic.name}}</a>
         </li>
         {% endfor %}
     </ul>

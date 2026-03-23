@@ -10,10 +10,10 @@
     <p><strong>Question:</strong>
     {{question.question_text}}</p>
 
-    <form action="" method="post">
+    <form action="{% url "question" topic.id question.id %}" method="post">
         {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit">Submit Answer</button>
+        <input type="text" name="answer" placeholder="Enter your answer" required>
+        <button type="submit">Submit & Next</button>
     </form>
 </body>
 </html>
