@@ -20,5 +20,5 @@ class UserAnswer(models.Model):
     score = models.FloatField(default=0)
     
     def __str__(self):
-        return f"Answer for {self.question.id}"
+        return f"Answer: {self.question.question_text}"
     
