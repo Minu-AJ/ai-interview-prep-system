@@ -42,11 +42,11 @@ class QuestionView(View):
         # topic = get_object_or_404(Topic, id=topic_id)
         question = get_object_or_404(Question, id=question_id)
 
-        user_answer = request.POST.get('answer')
+        user_answer = request.POST.get('answer', '')
         correct_answer = question.correct_answer
 
         # Score logic
-        if user_answer.strip().lower() == correct_answer.strip().lower():
+        if user_answer and user_answer.strip().lower() == correct_answer.strip().lower():
             score = 1
             request.session['score'] = request.session.get('score', 0) + 1
         else:

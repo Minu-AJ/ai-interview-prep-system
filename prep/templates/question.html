@@ -31,10 +31,16 @@
     </div>
     <!-- Progress Bar Ends Here -->
 
+    <div class="alert alert-warning text-center">
+        <i class="bi bi-alarm-fill me-2"></i>
+        Time Left:
+        <span id="timer">30</span> seconds
+    </div>
+
     <p><strong>Question:</strong></p>
     <p>{{ question.question_text }}</p>
 
-    <form action="{% url 'question' topic.id question.id %}" method="post">
+    <form id="questionForm" action="{% url 'question' topic.id question.id %}" method="post">
         {% csrf_token %}
 
         <input
@@ -51,5 +57,20 @@
 
 </div>
 
+<script>
+    let timeLeft = 30;
+    const timer = document.getElementById('timer');
+    const form = document.getElementById('questionForm');
+    const countdown = setInterval(function() {
+
+        timeLeft--;
+        timer.textContent = timeLeft;
+        if (timeLeft <= 0) {
+            clearInterval(countdown);
+            alert("Time's up! Moving to the next question.");
+            form.submit();
+        } 
+    }, 1000);
+</script>
 </body>
 </html>
