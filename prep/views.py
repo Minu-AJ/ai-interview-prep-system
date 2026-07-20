@@ -108,3 +108,20 @@ def start_question(request, topic_id):
         topic_id=topic_id, 
         question_id=first_question.id
         )
+
+
+
+from django.views.generic import ListView, DetailView
+
+class InterviewHistoryView(ListView):
+    model = UserAnswer
+    template_name = 'history.html'
+    context_object_name = 'answers'
+    ordering = ["-id"]  # Order by most recent first
+    
+    
+class InterviewHistoryDetailView(DetailView):
+    model = UserAnswer
+    template_name = 'history_detail.html'
+    context_object_name = 'answer'
+    

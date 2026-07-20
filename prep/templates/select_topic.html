@@ -1,18 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h2>Select Topic</h2>
-    <ul>
+{% extends "base.html" %}
+
+{% block title %}Select Topic{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h2 class="text-center mb-5"> <i class="bi bi-bullseye"></i> Select an Interview Topic</h2>
+
+    <div class="row">
+
         {% for topic in topics %}
-        <li>
-            <a href="{% url "start_question" topic.id %}">{{topic.name}}</a>
-        </li>
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card shadow h-100">
+
+                <div class="card-body d-flex flex-column">
+
+                    <h4 class="card-title">
+                        {{ topic.name }}
+                    </h4>
+
+                    <p class="card-text">
+                        {{ topic.description }}
+                    </p>
+
+                    <a href="{% url 'start_question' topic.id %}"
+                       class="btn btn-primary mt-auto"><i class="bi bi-rocket-takeoff-fill"></i>
+                        Start Interview
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
         {% endfor %}
-    </ul>
-</body>
-</html>
+
+    </div>
+
+</div>
+
+{% endblock %}
